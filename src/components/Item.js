@@ -6,17 +6,13 @@ export default class Item extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currentCount: 0
-    };
-
     this.increase = this.increase.bind(this);
     this.onRemove = this.onRemove.bind(this);
   }
 
   render() {
     let className = 'Item';
-    if (this.state.currentCount === this.props.item.count) {
+    if (this.props.item.status === this.props.item.count) {
       className += ' Item-done'
     }
     return(
@@ -27,7 +23,7 @@ export default class Item extends Component {
         <section className="Item-stats">
           <section className="Item-count">
             <section>
-              {this.state.currentCount}
+              {this.props.item.status}
             </section>
             /
             <section>
@@ -44,8 +40,8 @@ export default class Item extends Component {
   }
 
   increase() {
-    if (this.state.currentCount <  this.props.item.count) {
-      this.setState({currentCount: this.state.currentCount + 1});
+    if (this.props.item.status <  this.props.item.count) {
+      this.props.store.dispatch({ type: 'UP_NUMBER', id: this.props.item.id});
     }
   }
 

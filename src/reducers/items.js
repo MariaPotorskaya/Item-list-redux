@@ -10,7 +10,7 @@ const items = (state = [], action) => {
                 if (item.id !== action.id) {
                     return item;
                 }
-                return {...item, count: ++item.count};
+                return {...item, status: ++item.status};
             });
         case 'REMOVE_ITEM':
             const index = state.findIndex(item => item.id === action.id);

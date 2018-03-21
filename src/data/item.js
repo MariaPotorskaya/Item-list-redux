@@ -8,5 +8,6 @@ export default class Item {
     this.id = guid();
     this.name = name;
     this.count = count;
+    this.status = 0;
   }
 }
